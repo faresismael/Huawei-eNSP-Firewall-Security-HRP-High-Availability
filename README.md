@@ -47,16 +47,12 @@ To validate the design, the simulation is bridged to a local Cloud interface, al
 Live command output and packet captures were used to confirm each part of the design actually behaves as intended — not just "it pings," but the specific mechanism behind each feature.
 
 ✅ **Master Firewall — Active State**
-`display hrp state` on HQ-FW1 confirms the Active role, a stable priority, and a healthy heartbeat with HQ-FW2.
+`display vrrp brief` on HQ-FW1 shows all three VRRP groups (WAN, LAN-transit, DMZ) in `Master` state, confirming HQ-FW1 is currently the Active firewall handling all traffic.
 ![HRP Master Active](images/hrp-master-active.png)
 
-✅ **Standby Firewall — Standby State**
-`display hrp state` on HQ-FW2 mirrors HQ-FW1's view from the other side, confirming both firewalls agree on the cluster's state.
+✅ **Standby Firewall — Standby State & VGMP Unification**
+The same command on HQ-FW2 shows all three groups as `Backup` — and critically, all three report `Type: Vgmp`, confirming the cluster fails over as one atomic unit rather than three independent VRRP groups.
 ![HRP Standby State](images/hrp-standby.png)
-
-✅ **VRRP + VGMP — Unified Virtual Gateways**
-`display vrrp brief` on HQ-FW2 shows all three VRRP groups (WAN, LAN-transit, DMZ) reporting as `Vgmp` type — confirming they fail over together as one HRP-driven unit, not three independent groups.
-![VRRP Brief](images/vrrp-brief.png)
 
 ✅ **Routing Resilience — VIP-Anchored Static Routes**
 `display ip routing-table` on the Core Switch confirms the default route and the DMZ route both resolve through the VRRP virtual IP (`10.10.100.254`) — not a physical firewall address — with active `RD` flags.
@@ -66,8 +62,12 @@ Live command output and packet captures were used to confirm each part of the de
 `ping` and `tracert` from an internal host to `203.0.113.1` confirmed correct routing and hop count through the WAN Switch → ISP Router path.
 ![Ping and Traceroute](images/ping-tracert.png)
 
-✅ **Packet-Level Validation — Wireshark**
-Live capture on the WAN-facing link confirmed ICMP echo request/reply traffic and correct TTL behavior across the NAT boundary.
+✅ **NAT & Session Validation — Firewall Session Table**
+`display firewall session table` on HQ-FW1 shows live NAT sessions in progress — internal host `10.10.10.10` is actively translated through the firewall — alongside the dedicated HRP heartbeat UDP sessions running between the two firewalls.
+![Firewall Session Table](images/firewall-session-table.png)
+
+✅ **Packet-Level Validation — Wireshark (NAT Confirmed)**
+Two synchronized captures show the same ICMP conversation from both sides of the firewall: internally the source is the private address `10.10.10.10`, but on the WAN link it appears as the firewall's public address `203.0.113.2` — direct proof that Easy-IP NAT is translating traffic, not just routing it.
 ![Wireshark Capture](images/wireshark-icmp.png)
 
 🌉 **Bonus — Real-World Internet Bridging**
