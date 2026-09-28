@@ -48,7 +48,7 @@ Live command output and packet captures were used to confirm each part of the de
 
 ✅ **Master Firewall — Active State**
 `display vrrp brief` on HQ-FW1 shows all three VRRP groups (WAN, LAN-transit, DMZ) in `Master` state, confirming HQ-FW1 is currently the Active firewall handling all traffic.
-![HRP Master Active](images/hrp-master-active.png)
+![HRP Master Active]([images/hrp-master-active.png](https://github.com/faresismael/Huawei-eNSP-Firewall-Security-HRP-High-Availability-Cluster/blob/main/Screenshots/hrp-master-active.png?raw=true))
 
 ✅ **Standby Firewall — Standby State & VGMP Unification**
 The same command on HQ-FW2 shows all three groups as `Backup` — and critically, all three report `Type: Vgmp`, confirming the cluster fails over as one atomic unit rather than three independent VRRP groups.
