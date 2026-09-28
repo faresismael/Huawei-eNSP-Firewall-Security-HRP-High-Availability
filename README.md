@@ -50,6 +50,7 @@ Live command output and packet captures were used to confirm each part of the de
 
 ✅ **Standby Firewall — Standby State & VGMP Unification**
 The same command on HQ-FW2 shows all three groups as `Backup` — and critically, all three report `Type: Vgmp`, confirming the cluster fails over as one atomic unit rather than three independent VRRP groups.
+
 ![HRP Standby State](Screenshots/hrp-standby.png)
 
 ✅ **Routing Resilience — VIP-Anchored Static Routes**
