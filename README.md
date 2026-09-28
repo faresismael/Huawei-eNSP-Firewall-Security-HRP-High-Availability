@@ -49,11 +49,11 @@ Live command output and packet captures were used to confirm each part of the de
 ✅ **Master Firewall — Active State**
 `display vrrp brief` on HQ-FW1 shows all three VRRP groups (WAN, LAN-transit, DMZ) in `Master` state, confirming HQ-FW1 is currently the Active firewall handling all traffic. 
 
-![HRP Master Active]([images/hrp-master-active.png](https://github.com/faresismael/Huawei-eNSP-Firewall-Security-HRP-High-Availability-Cluster/blob/main/Screenshots/hrp-master-active.png?raw=true))
+![HRP Master Active](Screenshots/hrp-master-active.png)
 
 ✅ **Standby Firewall — Standby State & VGMP Unification**
 The same command on HQ-FW2 shows all three groups as `Backup` — and critically, all three report `Type: Vgmp`, confirming the cluster fails over as one atomic unit rather than three independent VRRP groups.
-![HRP Standby State](images/hrp-standby.png)
+![HRP Standby State](Screenshots/hrp-standby.png)
 
 ✅ **Routing Resilience — VIP-Anchored Static Routes**
 `display ip routing-table` on the Core Switch confirms the default route and the DMZ route both resolve through the VRRP virtual IP (`10.10.100.254`) — not a physical firewall address — with active `RD` flags.
@@ -61,11 +61,14 @@ The same command on HQ-FW2 shows all three groups as `Backup` — and critically
 
 ✅ **Connectivity — Ping & Traceroute to the Internet**
 `ping` and `tracert` from an internal host to `203.0.113.1` confirmed correct routing and hop count through the WAN Switch → ISP Router path.
-![Ping and Traceroute](images/ping-tracert.png)
+
+![Ping and Traceroute](Screenshots/ping-tracert.png)
 
 ✅ **NAT & Session Validation — Firewall Session Table**
 `display firewall session table` on HQ-FW1 shows live NAT sessions in progress — internal host `10.10.10.10` is actively translated through the firewall — alongside the dedicated HRP heartbeat UDP sessions running between the two firewalls.
-![Firewall Session Table](images/firewall-session-table.png)
+
+![Firewall Session Table](Screenshots/firewall-session-table.png)
+
 
 ✅ **Packet-Level Validation — Wireshark (NAT Confirmed)**
 Two synchronized captures show the same ICMP conversation from both sides of the firewall: internally the source is the private address `10.10.10.10`, but on the WAN link it appears as the firewall's public address `203.0.113.2` — direct proof that Easy-IP NAT is translating traffic, not just routing it.
@@ -75,6 +78,7 @@ Two synchronized captures show the same ICMP conversation from both sides of the
 
 🌉 **Bonus — Real-World Internet Bridging**
 Cloud1's UDP port-binding feature bridges the simulated topology to a real Windows network adapter, confirmed with bidirectional ping between the ISP Router and the host machine.
+
 ![Cloud Bridge Test](Screenshots/cloud-bridge-test.png)
 
 
