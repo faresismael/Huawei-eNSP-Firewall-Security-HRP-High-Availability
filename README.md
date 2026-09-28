@@ -72,7 +72,7 @@ Two synchronized captures show the same ICMP conversation from both sides of the
 
 🌉 **Bonus — Real-World Internet Bridging**
 Cloud1's UDP port-binding feature bridges the simulated topology to a real Windows network adapter, confirmed with bidirectional ping between the ISP Router and the host machine.
-![Cloud Bridge Test]([images/cloud-bridge-test.png](https://github.com/faresismael/Huawei-eNSP-Firewall-Security-HRP-High-Availability-Cluster/blob/main/Screenshots/cloud-bridge-test.png?raw=true))
+![Cloud Bridge Test]([images/cloud-bridge-test.png](https://github.com/faresismael/Huawei-eNSP-Firewall-Security-HRP-High-Availability-Cluster/blob/main/Screenshots/cloud-bridge-test.png?raw=true).
 
 > [!NOTE]
 > **Not yet captured:** a controlled ping from an Untrust-zone host toward the Trust zone (to confirm the deny policy is enforced), and an FTP/HTTP client test against the DMZ Web Server. Both are natural next tests for this topology.
