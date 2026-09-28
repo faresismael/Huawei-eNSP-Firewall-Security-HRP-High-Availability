@@ -20,7 +20,7 @@ To validate the design, the simulation is bridged to a local Cloud interface, al
 
 ## Network Topology
 
-![Network Topology]([images/topology.png](https://github.com/faresismael/Huawei-eNSP-Firewall-Security-HRP-High-Availability-Cluster/blob/main/Screenshots/topology.png.png?raw=true))
+![Network Topology](https://github.com/faresismael/Huawei-eNSP-Firewall-Security-HRP-High-Availability-Cluster/blob/main/Screenshots/topology.png.png?raw=true)
 
 | Zone | Devices | Subnet(s) |
 | :--- | :--- | :--- |
