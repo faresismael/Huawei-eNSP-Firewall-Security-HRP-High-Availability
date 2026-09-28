@@ -57,7 +57,8 @@ The same command on HQ-FW2 shows all three groups as `Backup` — and critically
 
 ✅ **Routing Resilience — VIP-Anchored Static Routes**
 `display ip routing-table` on the Core Switch confirms the default route and the DMZ route both resolve through the VRRP virtual IP (`10.10.100.254`) — not a physical firewall address — with active `RD` flags.
-![Routing Table](images/routing-table.png)
+
+![Routing Table](https://github.com/faresismael/Huawei-eNSP-Firewall-Security-HRP-High-Availability-Cluster/blob/main/Screenshots/routing-table.png?raw=true)
 
 ✅ **Connectivity — Ping & Traceroute to the Internet**
 `ping` and `tracert` from an internal host to `203.0.113.1` confirmed correct routing and hop count through the WAN Switch → ISP Router path.
