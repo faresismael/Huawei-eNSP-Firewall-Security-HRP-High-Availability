@@ -68,7 +68,8 @@ The same command on HQ-FW2 shows all three groups as `Backup` — and critically
 
 ✅ **Packet-Level Validation — Wireshark (NAT Confirmed)**
 Two synchronized captures show the same ICMP conversation from both sides of the firewall: internally the source is the private address `10.10.10.10`, but on the WAN link it appears as the firewall's public address `203.0.113.2` — direct proof that Easy-IP NAT is translating traffic, not just routing it.
-![Wireshark Capture]([images/wireshark-icmp.png](https://github.com/faresismael/Huawei-eNSP-Firewall-Security-HRP-High-Availability-Cluster/blob/main/Screenshots/wireshark-icmp.png?raw=true)
+![Wireshark Capture](Screenshots/wireshark-icmp.png)
+
 
 🌉 **Bonus — Real-World Internet Bridging**
 Cloud1's UDP port-binding feature bridges the simulated topology to a real Windows network adapter, confirmed with bidirectional ping between the ISP Router and the host machine.
