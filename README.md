@@ -67,7 +67,7 @@ The same command on HQ-FW2 shows all three groups as `Backup` — and critically
 ✅ **NAT & Session Validation — Firewall Session Table**
 `display firewall session table` on HQ-FW1 shows live NAT sessions in progress — internal host `10.10.10.10` is actively translated through the firewall — alongside the dedicated HRP heartbeat UDP sessions running between the two firewalls.
 
-![Firewall Session Table](Screenshots/firewall-session-table.png)
+![Firewall Session Table](https://github.com/faresismael/Huawei-eNSP-Firewall-Security-HRP-High-Availability-Cluster/blob/main/Screenshots/firewall%20session%20table.png?raw=true)
 
 
 ✅ **Packet-Level Validation — Wireshark (NAT Confirmed)**
