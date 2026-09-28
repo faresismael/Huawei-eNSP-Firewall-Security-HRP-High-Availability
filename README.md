@@ -47,7 +47,8 @@ To validate the design, the simulation is bridged to a local Cloud interface, al
 Live command output and packet captures were used to confirm each part of the design actually behaves as intended — not just "it pings," but the specific mechanism behind each feature.
 
 ✅ **Master Firewall — Active State**
-`display vrrp brief` on HQ-FW1 shows all three VRRP groups (WAN, LAN-transit, DMZ) in `Master` state, confirming HQ-FW1 is currently the Active firewall handling all traffic.
+`display vrrp brief` on HQ-FW1 shows all three VRRP groups (WAN, LAN-transit, DMZ) in `Master` state, confirming HQ-FW1 is currently the Active firewall handling all traffic. 
+
 ![HRP Master Active]([images/hrp-master-active.png](https://github.com/faresismael/Huawei-eNSP-Firewall-Security-HRP-High-Availability-Cluster/blob/main/Screenshots/hrp-master-active.png?raw=true))
 
 ✅ **Standby Firewall — Standby State & VGMP Unification**
