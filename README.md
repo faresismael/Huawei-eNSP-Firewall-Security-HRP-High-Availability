@@ -29,9 +29,6 @@ To validate the design, the simulation is bridged to a local Cloud interface, al
 | **Trust Zone** | PC1–PC3 (VLAN 10), Server1–Server3 (VLAN 20) | `10.10.10.0/24`, `10.10.20.0/24` |
 | **Firewall Cluster** | HQ-FW1 (Active) & HQ-FW2 (Standby) | HRP heartbeat: `10.10.40.0/24` |
 
-### Full IP Addressing
-
-![IP Addressing Table](images/ip-addressing-table.png)
 
 ## Technical Features & Implementation
 
